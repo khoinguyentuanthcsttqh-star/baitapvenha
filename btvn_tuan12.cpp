@@ -3,7 +3,7 @@
 #include <iomanip>
 using namespace std;
 
-void printArray(const vector<int>& a)
+void xuatMang(const vector<int>& a)
 {
     for (int x : a)
         cout << setw(4) << x;
@@ -11,13 +11,13 @@ void printArray(const vector<int>& a)
     cout << endl;
 }
 
-void heapify(vector<int>& a, int n, int i)
+void vunDong(vector<int>& a, int n, int i)
 {
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
 
-    cout << "\nHeapify nut i = " << i << endl;
+    cout << "\nvundong nut i = " << i << endl;
 
     if (left < n)
         cout << "Con trai  a[" << left << "] = "
@@ -44,20 +44,20 @@ void heapify(vector<int>& a, int n, int i)
         swap(a[i], a[largest]);
 
         cout << "Trang thai hien tai:\n";
-        printArray(a);
+        xuatMang(a);
 
-        heapify(a, n, largest);
+        vunDong(a, n, largest);
     }
     else
     {
         cout << "Khong can doi\n";
 
         cout << "Trang thai hien tai:\n";
-        printArray(a);
+        xuayMang(a);
     }
 }
 
-void heapSort(vector<int>& a)
+void sapXepVunDong(vector<int>& a)
 {
     int n = a.size();
 
@@ -68,13 +68,13 @@ void heapSort(vector<int>& a)
     // Build Heap
     for (int i = n / 2 - 1; i >= 0; i--)
     {
-        cout << "\n--- Heapify tai i = "
+        cout << "\n--- vundong tai i = "
              << i
              << " ---\n";
 
-        heapify(a, n, i);
+        vunDong(a, n, i);
 
-        cout << "Sau heapify i = "
+        cout << "Sau vundong i = "
              << i
              << ":\n";
 
@@ -95,14 +95,14 @@ void heapSort(vector<int>& a)
         swap(a[0], a[i]);
 
         cout << "Sau khi doi:\n";
-        printArray(a);
+        xuatMang(a);
 
         cout << "\nVun lai heap:\n";
 
-        heapify(a, i, 0);
+        vunDong(a, i, 0);
 
         cout << "Mang sau khi vun lai:\n";
-        printArray(a);
+        xuatMang(a);
     }
 }
 
@@ -121,13 +121,13 @@ int main()
         cin >> a[i];
 
     cout << "\nMang ban dau:\n";
-    printArray(a);
+    xuatMang(a);
 
-    heapSort(a);
+    sapXepVunDong(a);
 
     cout << "\n========================\n";
     cout << "Mang sau khi sap xep:\n";
-    printArray(a);
+    xuatMang(a);
 
     return 0;
 }
