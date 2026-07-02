@@ -1,9 +1,3 @@
-// Bài tập dựng cây nhị phân tìm kiếm, yêu cầu tạo hàm thêm node vào cây theo quy tắc, tìm 1 giá trị thỏa mãn xem có tồn tại trong cây nhị phân hay kh
-
-// Cài đặt cây nhị phân bằng lưu trữ kế tiếp, các node rỗng được biểu diễn bởi gtri 0.
-
-// Quy tắc lập cây nhị phân hiện tại là: nếu nhỏ hơn hoặc bằng node hiện tại thì thêm vào con bên trái, nếu lớn hơn nút hiện tại thì bên phải
-
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -38,9 +32,9 @@ void timGiaTri(int tree[], int max, int find) {    // Hàm tìm kiếm 1 giá tr
             return;   }
 
 
-    if (find <= tree[i]) {  // Nếu giá trị cần tìm lớn hơn nút hiện tại -> Rẽ sang phải
+    if (find <= tree[i]) {  // Nếu giá trị cần tìm <= nút hiện tại -> rẽ sang trái
         i = 2 * i + 1;  }
-    else { i = 2 * i + 2; }  // ngược lại thì sang trái
+    else { i = 2 * i + 2; }  // nếu lớn hơn rẽ sang phải
 }
     cout << "Khong tim thay gia tri " << find << " trong cay tim kiem nhi phan" <<  endl;   // Lặp hết mà kh thấy thì in ra kh thấy
 }
