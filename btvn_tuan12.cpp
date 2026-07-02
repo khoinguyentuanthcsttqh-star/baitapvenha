@@ -53,7 +53,7 @@ void vunDong(vector<int>& a, int n, int i)
         cout << "Khong can doi\n";
 
         cout << "Trang thai hien tai:\n";
-        xuayMang(a);
+        xuatMang(a);
     }
 }
 
@@ -78,7 +78,7 @@ void sapXepVunDong(vector<int>& a)
              << i
              << ":\n";
 
-        printArray(a);
+        xuatMang(a);
     }
 
     cout << "\n========================\n";
