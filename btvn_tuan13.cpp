@@ -60,7 +60,7 @@ int main() {
     int arr[] = {2001,2002,2006,2007,2003,2004,2005,2001,1999,2004};
     int n = sizeof(arr) / sizeof(arr[0]);    
     int max = pow(2,n)-1;    // Tính số node tối đa của cây nhị phân làm từ các gtri trong mảng
-    int tree[max] = {0};
+    int* tree = new int[max]();
 
     initial_BST(arr, n, tree, max);
     Print_BST(tree, max);
@@ -70,6 +70,6 @@ int main() {
 
     search_BST(tree, max, 2004); 
     search_BST(tree, max, 1111);
-
+    delete[] tree;
     return 0;
 }
