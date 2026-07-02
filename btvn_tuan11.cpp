@@ -93,24 +93,24 @@ Node* cayBieuThuc() {
 
     return chia;
 }
-void duyetTruoc(Node* root) {
+void preOrder(Node* root) {
     if(root != NULL) {
         cout << root->data << " ";
-        duyetTruoc(root->left);
-        duyetTruoc(root->right);
+        preOrder(root->left);
+        preOrder(root->right);
     }
 }
-void duyetGiua(Node* root) {
+void inOrder(Node* root) {
     if(root != NULL) {
-        duyetGiua(root->left);
+        inOrder(root->left);
         cout << root->data << " ";
-        duyetGiua(root->right);
+        inOrder(root->right);
     }
 }
-void duyetSau(Node* root) {
+void postOrder(Node* root) {
     if(root != NULL) {
-        duyetSau(root->left);
-        duyetSau(root->right);
+        postOrder(root->left);
+        postOrder(root->right);
         cout << root->data << " ";
     }
 }
@@ -151,13 +151,13 @@ int main() {
     Node* daydu = cayDayDu();
 
     cout << "Duyet truoc : ";
-    duyetTruoc(daydu);
+    preOrder(daydu);
 
     cout << "\nDuyet giua  : ";
-    duyetGiua(daydu);
+    inOrder(daydu);
 
     cout << "\nDuyet sau   : ";
-    duyetSau(daydu);
+    postOrder(daydu);
 
     cout << "\n\n";
 
@@ -169,13 +169,13 @@ int main() {
     Node* trai = cayLechTrai();
 
     cout << "Duyet truoc : ";
-    duyetTruoc(trai);
+    preOrder(trai);
 
     cout << "\nDuyet giua  : ";
-    duyetGiua(trai);
+    inOrder(trai);
 
     cout << "\nDuyet sau   : ";
-    duyetSau(trai);
+    postOrder(trai);
 
     cout << "\n\n";
 
@@ -187,13 +187,13 @@ int main() {
     Node* phai = cayLechPhai();
 
     cout << "Duyet truoc : ";
-    duyetTruoc(phai);
+    preOrder(phai);
 
     cout << "\nDuyet giua  : ";
-    duyetGiua(phai);
+    inOrder(phai);
 
     cout << "\nDuyet sau   : ";
-    duyetSau(phai);
+    postOrder(phai);
 
     cout << "\n\n";
 
@@ -205,13 +205,13 @@ int main() {
     Node* zigzag = cayZigZag();
 
     cout << "Duyet truoc : ";
-    duyetTruoc(zigzag);
+    preOrder(zigzag);
 
     cout << "\nDuyet giua  : ";
-    duyetGiua(zigzag);
+    inOrder(zigzag);
 
     cout << "\nDuyet sau   : ";
-    duyetSau(zigzag);
+    postOrder(zigzag);
 
     cout << "\n\n";
 
