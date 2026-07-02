@@ -8,7 +8,7 @@
 #include <cmath>
 using namespace std;
 
-void add_nodeBST(int tree[], int max, int a) {    // Hàm thêm node vào cây nhị phân theo quy tắc 
+void themNode(int tree[], int max, int a) {    // Hàm thêm node vào cây nhị phân theo quy tắc 
     int i = 0;                                  
     while (i < max) {              
         if (tree[i] == 0)  // Thêm giá trị vào node rỗng
@@ -21,14 +21,14 @@ void add_nodeBST(int tree[], int max, int a) {    // Hàm thêm node vào cây
 }
 
 
-void initial_BST(int arr[], int n, int tree[], int max) {    // Hàm dựng cây nhị phân tìm kiếm theo yêu cầu 
+void khoiTaoCay(int arr[], int n, int tree[], int max) {    // Hàm dựng cây nhị phân tìm kiếm theo yêu cầu 
     for (int i = 0; i < n; i++) {
-        add_nodeBST(tree, max, arr[i]);    // Thêm từng ptu trong mảng vào cây nhị phân bằng hàm có sẵn
+        themNode(tree, max, arr[i]);    // Thêm từng ptu trong mảng vào cây nhị phân bằng hàm có sẵn
     }    }
 
 
 
-void search_BST(int tree[], int max, int find) {    // Hàm tìm kiếm 1 giá trị trong cây nhị phân 
+void timGiaTri(int tree[], int max, int find) {    // Hàm tìm kiếm 1 giá trị trong cây nhị phân 
     int i = 0; 
     while (i < max) {      // tạo vòng lặp từ đàu đến cuối cây 
 
@@ -46,7 +46,7 @@ void search_BST(int tree[], int max, int find) {    // Hàm tìm kiếm 1 giá t
 }
 
 
-void Print_BST(int tree[], int max) {      // Hàm in cây từ đầu đến node cuối cùng khác rỗng 
+void xuatCay(int tree[], int max) {      // Hàm in cây từ đầu đến node cuối cùng khác rỗng 
     int p = -1;
     for (int i = max - 1; i >= 0; i--) {     // Tìm ptu cuối cùng có nghĩa
         if (tree[i] != 0) { p = i;   break;  }  } // Tìm phần tử khác rỗng cuối cùng và lưu vị trí
@@ -62,14 +62,14 @@ int main() {
     int max = pow(2,n)-1;    // Tính số node tối đa của cây nhị phân làm từ các gtri trong mảng
     int* tree = new int[max]();
 
-    initial_BST(arr, n, tree, max);
-    Print_BST(tree, max);
+    khoiTaoCay(arr, n, tree, max);
+    xuatCay(tree, max);
 
-    add_nodeBST(tree, max, 1777);       // thêm ptu vào cây nhị phân tìm kiếm
-    Print_BST(tree, max);
+    themNode(tree, max, 1777);       // thêm ptu vào cây nhị phân tìm kiếm
+    xuatCay(tree, max);
 
-    search_BST(tree, max, 2004); 
-    search_BST(tree, max, 1111);
+    timGiaTri(tree, max, 2004); 
+    timGiaTri(tree, max, 1111);
     delete[] tree;
     return 0;
 }
