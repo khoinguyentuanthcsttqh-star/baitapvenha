@@ -36,8 +36,8 @@ Node* XoayPhai(Node* y) {
     x->right = y;
     y->left = T;
 
-    y->chieuCao = max(chieuCao(y->left), chieuCao(y->right)) + 1;
-    x->chieuCao = max(chieuCao(x->left), chieuCao(x->right)) + 1;
+    y->chieuCao = soLonNhat(chieuCao(y->left), chieuCao(y->right)) + 1;
+    x->chieuCao = soLonNhat(chieuCao(x->left), chieuCao(x->right)) + 1;
     return x;
 }
 // quay trái
