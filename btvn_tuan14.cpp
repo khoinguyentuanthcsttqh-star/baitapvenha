@@ -6,30 +6,25 @@ struct Node {
     int data;
     Node* left;
     Node* right;
-    int height;
+    int chieuCao;
 };
-// chiều cao của cây
-int height(Node* p) {
+int chieuCao(Node* p) {
     if (p == NULL)
         return 0;
-    return p->height;
+    return p->chieuCao;
 }
-
-// tìm số lớn hơn
-int max(int a, int b) {
+int soLonNhat(int a, int b) {
     if (a > b)
         return a;
     return b;
 }
-
-// tao nút mới
-Node* createNode(int x) {
+Node* taoNode(int x) {
     Node* p = new Node;
 
     p->data = x;
     p->left = NULL;
     p->right = NULL;
-    p->height = 1;
+    p->chieuCao = 1;
 
     return p;
 }
@@ -41,8 +36,8 @@ Node* XoayPhai(Node* y) {
     x->right = y;
     y->left = T;
 
-    y->height = max(height(y->left), height(y->right)) + 1;
-    x->height = max(height(x->left), height(x->right)) + 1;
+    y->chieuCao = max(chieuCao(y->left), chieuCao(y->right)) + 1;
+    x->chieuCao = max(chieuCao(x->left), chieuCao(x->right)) + 1;
     return x;
 }
 // quay trái
@@ -53,38 +48,35 @@ Node* XoayTrai(Node* x) {
     y->left = x;
     x->right = T;
 
-    x->height = max(height(x->left), height(x->right)) + 1;
-    y->height = max(height(y->left), height(y->right)) + 1;
+    x->chieuCao = soLonNhat(chieuCao(x->left), chieuCao(x->right)) + 1;
+    y->chieuCao = soLonNhat(chieuCao(y->left), chieuCao(y->right)) + 1;
 
     return y;
 }
-// tính hệ số cân bằng
-int getBalance(Node* p) {
+int tinhCanBang(Node* p) {
     if (p == NULL)
         return 0;
 
-    return height(p->left) - height(p->right);
+    return chieuCao(p->left) - chieuCao(p->right);
 }
-
-// thêm vào cây AVL
-Node* insert(Node* root, int x) {
+Node* themNode(Node* root, int x) {
 
     if (root == NULL)
-        return createNode(x);
+        return taoNode(x);
 
     if (x < root->data)
-        root->left = insert(root->left, x);
+        root->left = themNode(root->left, x);
 
     else if (x > root->data)
-        root->right = insert(root->right, x);
+        root->right = themNode(root->right, x);
 
     else
         return root;
 
-    root->height =
-        max(height(root->left), height(root->right)) + 1;
+    root->chieuCao =
+        soLonNhat(chieuCao(root->left), chieuCao(root->right)) + 1;
 
-    int balance = getBalance(root);
+    int balance = tinhCanBang(root);
     // Left Left
     if (balance > 1 && x < root->left->data)
         return XoayPhai(root);
@@ -125,7 +117,7 @@ int main() {
 
     // thêm các phần tử vào cây AVL
     for (int i = 0; i < n; i++) {
-        root = insert(root, a[i]);
+        root = themNode(root, a[i]);
     }
 
     cout << "Cac phan tu tren cay AVL sau khi duyet LNR:\n";
